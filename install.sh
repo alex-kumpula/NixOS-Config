@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
-# 1) make a one-time backup of your entire config
+# 1) one-time backup of your old config
 if [ ! -d /etc/nixos-backup ]; then
-    sudo cp -a /etc/nixos /etc/nixos-backup
+  sudo cp -a /etc/nixos /etc/nixos-backup
 fi
 
-# 2) mirror everything *except* hardware-configuration.nix
-sudo rsync -av \
-  	--exclude='hardware-configuration.nix' \
-  	./ /etc/nixos/
+# 2) mirror everything in ./ → /etc/nixos, delete extras,
+#    but leave hardware-configuration.nix untouched
+sudo rsync -a \
+  --delete \
+  --filter="P hardware-configuration.nix" \
+  ./ /etc/nixos/
 
-# 3) rebuild with your preserved hardware file
+# 3) rebuild NixOS
 sudo nixos-rebuild switch
