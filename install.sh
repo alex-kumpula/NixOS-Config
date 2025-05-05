@@ -10,6 +10,7 @@ fi
 sudo rsync -a \
   --delete \
   --filter="P hardware-configuration.nix" \
+  --exclude='.git' \
   ./ /etc/nixos/
 
 # 3) rebuild NixOS
