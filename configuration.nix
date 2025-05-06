@@ -94,7 +94,7 @@
     pkgs.git
     pkgs.gh
     pkgs.vscode
-    nurPkgs.nur.repos.mic92.hello-nur
+    nurPkgs.repos.mic92.hello-nur
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
