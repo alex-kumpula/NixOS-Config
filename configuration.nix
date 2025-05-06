@@ -4,9 +4,6 @@
 
 { inputs, outputs, lib, config, pkgs, ... }:
 
-let
-  inherit (repos.mic92) hello-nur;
-in
 {
   imports =
     [ # Include the results of the hardware scan.
