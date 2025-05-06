@@ -7,8 +7,6 @@
     };
     nur = {
       url = "github:nix-community/NUR";
-      flake = true;
-      # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -20,12 +18,22 @@
   } @ inputs: let
     inherit (self) outputs;
     lib = nixpkgs.lib;
+    system = "x86_64-linux";
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
+      overlays = [
+        nur.overlay
+      ];
+    };
   in {
     nixosConfigurations = {
       nixos-tutorial-hostname = lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./configuration.nix ];
-        specialArgs = { inherit inputs outputs; };  # Pass nur as a special argument
+        inherit system;
+        modules = [ 
+          ./configuration.nix 
+        ];
+        specialArgs = { inherit inputs outputs pkgs; };
       };
     };
   };
