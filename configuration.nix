@@ -11,7 +11,7 @@
       ./modules/desktop.nix
       ./modules/networking.nix
       ./modules/user.nix
-      ./modules.bootloader.nix
+      ./modules/bootloader.nix
     ];
 
   # # Bootloader.
