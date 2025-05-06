@@ -3,6 +3,7 @@
 {
   environment.systemPackages = with pkgs; [
     firefox
+    thunderbird
     # ... other desktop-related packages
   ];
 
@@ -11,10 +12,6 @@
   # Enable the KDE Plasma Desktop Environment.
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
-
-  environment.systemPackages = with pkgs; [
-    thunderbird
-  ];
 
   # ... other desktop-related configurations
 }
