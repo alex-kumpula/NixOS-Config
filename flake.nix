@@ -24,9 +24,7 @@
       inherit system;
       config.allowUnfree = true;
     };
-    nurPkgs = import nur {
-      inherit system;  # Only pass system, let NUR handle its own nixpkgs
-    };
+    nurPkgs = import nur;
   in {
     nixosConfigurations = {
       nixos-tutorial-hostname = lib.nixosSystem {
