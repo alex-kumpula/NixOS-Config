@@ -11,15 +11,16 @@
     };
   };
 
-  outputs = { self, nixpkgs, ... }: 
+  outputs = { self, nixpkgs, nur, ... }:
     let
       lib = nixpkgs.lib;
     in {
-    nixosConfigurations = {
-      nixos-tutorial-hostname = lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = [ ./configuration.nix ];
+      nixosConfigurations = {
+        nixos-tutorial-hostname = lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [ ./configuration.nix ];
+          specialArgs = { inherit nur; };  # Pass nur as a special argument
+        };
       };
     };
-  };
 }
