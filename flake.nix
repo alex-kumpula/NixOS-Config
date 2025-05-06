@@ -19,7 +19,7 @@
         nixos-tutorial-hostname = lib.nixosSystem {
           system = "x86_64-linux";
           modules = [ ./configuration.nix ];
-          specialArgs = { inherit nur; };  # Pass nur as a special argument
+          specialArgs = { inherit inputs outputs; };  # Pass nur as a special argument
         };
       };
     };

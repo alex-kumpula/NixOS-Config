@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, nur: { repos }, ... }:
+{ inputs, outputs, lib, config, pkgs, ... }:
 
 let
   inherit (repos.mic92) hello-nur;
@@ -97,7 +97,7 @@ in
     pkgs.git
     pkgs.gh
     pkgs.vscode
-    hello-nur
+    inputs.nur.repos.mic92.hello-nur
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
