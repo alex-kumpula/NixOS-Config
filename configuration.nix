@@ -75,7 +75,6 @@
     packages = with pkgs; [
       kdePackages.kate
       thunderbird
-      vscode
     ];
   };
 
