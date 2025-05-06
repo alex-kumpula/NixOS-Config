@@ -7,6 +7,7 @@
     };
     nur = {
       url = "github:nix-community/NUR";
+      # Removed the follows line to let NUR use its own nixpkgs
     };
   };
 
@@ -24,8 +25,7 @@
       config.allowUnfree = true;
     };
     nurPkgs = import nur {
-      nurpkgs = pkgs;
-      pkgs = pkgs;
+      inherit system;  # Only pass system, let NUR handle its own nixpkgs
     };
   in {
     nixosConfigurations = {
