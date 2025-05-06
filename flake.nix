@@ -7,6 +7,7 @@
     };
     nur = {
       url = "github:nix-community/NUR";
+      flake = true;
       # inputs.nixpkgs.follows = "nixpkgs";
     };
   };
