@@ -22,9 +22,10 @@
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
-      overlays = [
-        nur.overlay
-      ];
+    };
+    nurPkgs = import nur {
+      nurpkgs = pkgs;
+      pkgs = pkgs;
     };
   in {
     nixosConfigurations = {
@@ -33,7 +34,7 @@
         modules = [ 
           ./configuration.nix 
         ];
-        specialArgs = { inherit inputs outputs pkgs; };
+        specialArgs = { inherit inputs outputs pkgs nurPkgs; };
       };
     };
   };
